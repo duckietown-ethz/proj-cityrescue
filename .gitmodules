@@ -1,0 +1,12 @@
+[submodule "dt-core-cityrescue"]
+	path = dt-core-cityrescue
+	url = https://github.com/mistermzx/dt-core-cityrescue.git
+[submodule "rescue-acquisition-bridge"]
+	path = rescue-acquisition-bridge
+	url = https://github.com/carlbi/rescue-acquisition-bridge.git
+[submodule "simple-localization"]
+	path = simple-localization
+	url = https://github.com/jasonhu5/simple-localization.git
+[submodule "duckie-rescue-center"]
+	path = duckie-rescue-center
+	url = https://github.com/jasonhu5/duckie-rescue-center.git
