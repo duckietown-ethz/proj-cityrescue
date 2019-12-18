@@ -1,4 +1,0 @@
-[submodule "simple"]
-	path = simple-localization
-	url = https://github.com/jasonhu5/simple-localization.git
-	branch = v1
