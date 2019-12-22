@@ -23,7 +23,7 @@ The Duckietown should be setup as an [Autolab](https://docs.duckietown.org/daffy
     * The localization software on lab server(s)
 
 
-### Map creation
+### Map
 After building a Duckietown, the map should be recorded following [this procedure](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_map_making.html)
 
 ### Autobots
@@ -34,12 +34,41 @@ This part is mentioned below in [Duckiebot setup notes](#duckiebot-setup-notes).
 Ground AprilTags are essential and should be added to the Autolab following the instructions [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/localization_apriltags_specs.html). As also mentioned in the link, the tags should be added to the [map created](#map-creation)
 
 #### Watchtowers
+* Build, initialize and calibrate the watchtowers following instructions [here](https://docs.duckietown.org/daffy/opmanual_autolab/out/watchtower_hardware.html)
+* Place watchtowers in the Autolab with [this guideline](https://docs.duckietown.org/daffy/opmanual_autolab/out/localization_watchtower_placement.html)
+* Prepare the docker images on watchtowers. For each watchtower, run following commands on lab server:
+    * :computer: `docker -H <HOSTNAME>.local rm -f dt18_03_roscore_duckiebot-interface_1`
+    * :computer: `docker -H <HOSTNAME>.local pull duckietown/dt-duckiebot-interface:daffy-arm32v7`
+    * :computer: `docker -H <HOSTNAME>.local pull duckietown/acquisition-bridge:daffy-arm32v7`
 
-
+#### Lab server
+* Pull existing docker images needed
+    * :computer: `docker pull duckietown/dt-ros-commons:daffy-amd64`
+    * :computer: `docker pull duckietown/dt-autolab-rviz`
+    * :computer: `docker pull duckietown/apriltag-processor:daffy-amd64`
+    * :computer: `docker pull duckietown/wheel-odometry-processor:daffy-amd64`
+    * :computer: `docker pull duckietown/cslam-graphoptimizer:daffy-amd64`
+* In addition to the localization software, one should also clone the developed repositories onto the lab server
+    * :computer: `git clone` all 4 submodule repositories
+*  And among the developed repositories, build 2 of the server side images
+    * In terminal, navigate to the ___duckie-rescue-center___ repository. Then run :computer: `dts devel build -f --arch amd64`
+    * In terminal, navigate to the ___simple-localization___ repository. Then run :computer: `dts devel build -f --arch amd64`
 
 ## Duckiebot setup notes
+### Hardware
+The Duckiebot should be modified according to the [Autobot specification](https://docs.duckietown.org/daffy/opmanual_autolab/out/autolab_autobot_specs.html), without the autocharging part.
+
+### Software
+Among the developed repositories cloned to the lab server, build 2 of the Duckiebot side images:
+* In lab server terminal, navigate to the ___dt-core-cityrescue___ repository. Then run :computer: `dts devel build -f --arch arm32v7 -H <HOSTNAME>.local`
+* In lab server terminal, navigate to the ___rescue-acquisition-bridge___ repository. Then run :computer: `dts devel build -f --arch arm32v7 -H <HOSTNAME>.local`
 
 ## Pre-flight checklist
+- [x] The Autolab map yaml file is created, with ground AprilTags.
+- [x] The watchtowers are placed to properly cover the city.
+- [x] The watchtowers have the required _dt-duckiebot-interface_ and _acquisition-bridge_ images.
+- [x] The lab server has the required images, either pulled or built from the developed repositories.
+- [x] The Autobots have the required _dt-core-cityrescue_ and _rescue-acquisition-bridge_ built from the developed repositories.
 
 ## Demo instructions
 
