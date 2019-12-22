@@ -1,6 +1,8 @@
 # proj-cityrescue
 AMoD - City Rescue
 
+This readme file serves as an operation manual for running the entire city rescue demo. The documentation (explanation + how-to's) for each of the four submodules is within their own repository readme.
+
 # Visualization
   docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER=duckietown9 -e ROS_MASTER_IP=192.168.1.187 -e DUCKIETOWN_WORLD_FORK=jasonhu5 -e MAP_NAME=ethz_amod_lab_k31 duckietown/dt-autolab-rviz
 
