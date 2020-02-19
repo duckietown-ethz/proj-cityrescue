@@ -1,0 +1,9 @@
+<launch>
+    <group ns="rescue">
+        <node pkg="rescue_center" type="rescue_center_node.py" name="rescue_center" output="screen">
+          <param name="~dist_thres" type="double" value="0.5"/>
+          <param name="~add_duckiebot" type="int" value="-1"/>
+          <param name="~remove_duckiebot" type="int" value="-1"/>
+        </node>
+    </group>
+</launch>
